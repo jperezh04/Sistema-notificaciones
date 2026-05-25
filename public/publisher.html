@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicador - Notificaciones Universitarias</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header publisher-header">
+    <div>
+      <h1>Panel del Publicador</h1>
+      <p>Publicación de eventos académicos mediante WebSockets</p>
+    </div>
+    <span class="badge">Publisher</span>
+  </header>
+
+  <main class="single-container">
+    <section class="card wide-card">
+      <h2>Publicar notificación</h2>
+      <p class="muted">
+        Primero selecciona el boletín o canal, luego elige el tipo de evento disponible para ese canal.
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <label>Nombre del emisor</label>
+          <input id="publisherName" type="text" placeholder="Ejemplo: Docente" />
+        </div>
+
+        <div>
+          <label>Estado de conexión</label>
+          <div class="status-box">
+            <span id="publisherStatus">No conectado</span>
+          </div>
+        </div>
+      </div>
+
+      <button id="connectPublisherBtn">Conectar publicador</button>
+
+      <hr />
+
+      <label>Boletín / Canal</label>
+      <select id="channelSelect"></select>
+
+      <label>Tipo de evento</label>
+      <select id="eventSelect"></select>
+
+      <label>Título</label>
+      <input id="eventTitle" type="text" />
+
+      <label>Mensaje</label>
+      <textarea id="eventMessage" rows="5"></textarea>
+
+      <button id="publishBtn" class="success full-button">Publicar evento</button>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    Vista exclusiva del publicador | Servidor esperado:
+    <strong>ws://localhost:8080</strong>
+  </footer>
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="publisher-ui.js"></script>
+</body>
+</html>

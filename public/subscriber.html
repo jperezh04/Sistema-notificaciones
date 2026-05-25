@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suscriptor - Notificaciones Universitarias</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header subscriber-header">
+    <div>
+      <h1>Panel del Suscriptor</h1>
+      <p>Recepción de notificaciones universitarias en tiempo real</p>
+    </div>
+    <span class="badge">Subscriber</span>
+  </header>
+
+  <main class="single-container">
+    <section class="card wide-card">
+      <h2>Suscripción a boletines</h2>
+      <p class="muted">
+        El estudiante puede suscribirse o retirarse de distintos boletines.
+      </p>
+
+      <div class="grid-two">
+        <div>
+          <label>Nombre del suscriptor</label>
+          <input id="subscriberName" type="text" placeholder="Ejemplo: Jeremy" />
+        </div>
+
+        <div>
+          <label>Estado de conexión</label>
+          <div class="status-box">
+            <span id="subscriberStatus">No conectado</span>
+          </div>
+        </div>
+      </div>
+
+      <label>Boletines disponibles</label>
+      <div class="checkbox-group" id="subscriberChannels"></div>
+
+      <div class="button-row">
+        <button id="connectSubscriberBtn">Conectar suscriptor</button>
+        <button id="addChannelsBtn" class="secondary">Agregar boletines</button>
+        <button id="removeChannelsBtn" class="danger">Eliminar boletines</button>
+        <button id="myChannelsBtn" class="outline">Ver mis boletines</button>
+      </div>
+
+      <h3>Notificaciones recibidas</h3>
+      <div id="notifications" class="notifications">
+        <p class="empty">Todavía no hay notificaciones recibidas.</p>
+      </div>
+
+      <h3>Historial reciente</h3>
+      <div id="history" class="history">
+        <p class="empty">Todavía no hay historial cargado.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Vista exclusiva del suscriptor | Servidor esperado:
+    <strong>ws://localhost:8080</strong>
+  </footer>
+
+  <script src="subscriber-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f3f5f9;
+  color: #1f2937;
+}
+
+.header {
+  color: white;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.publisher-header {
+  background: #111827;
+}
+
+.subscriber-header {
+  background: #1e3a8a;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.header p {
+  margin: 6px 0 0;
+  color: #d1d5db;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.single-container {
+  padding: 30px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.wide-card {
+  width: 100%;
+  max-width: 980px;
+}
+
+.card h2 {
+  margin-top: 0;
+  color: #111827;
+}
+
+.card h3 {
+  margin-top: 24px;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 8px;
+}
+
+.muted {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+hr {
+  margin: 24px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin-top: 8px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 9px;
+  border-radius: 10px;
+}
+
+.checkbox-item input {
+  width: auto;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 11px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+button.secondary {
+  background: #4b5563;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+button.success {
+  background: #16a34a;
+}
+
+button.outline {
+  background: white;
+  color: #2563eb;
+  border: 1px solid #2563eb;
+}
+
+.full-button {
+  width: 100%;
+  margin-top: 18px;
+}
+
+.status-box {
+  margin-top: 0;
+  background: #f9fafb;
+  border-left: 4px solid #2563eb;
+  padding: 12px;
+  border-radius: 8px;
+  min-height: 42px;
+}
+
+.notifications,
+.history,
+.log {
+  min-height: 90px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: #f9fafb;
+  border-radius: 10px;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.notification-card,
+.history-item,
+.log-item {
+  background: white;
+  border-left: 5px solid #2563eb;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.notification-card strong {
+  color: #111827;
+}
+
+.notification-card p {
+  margin: 8px 0;
+}
+
+.notification-meta {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+.empty {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.footer {
+  text-align: center;
+  padding: 20px;
+  color: #6b7280;
+}
+
+@media (max-width: 800px) {
+  .single-container {
+    padding: 20px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .grid-two {
+    grid-template-columns: 1fr;
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+}
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 330px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.toast {
+  background: white;
+  border-left: 6px solid #2563eb;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+  animation: slideIn 0.25s ease;
+}
+
+.toast strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #111827;
+}
+
+.toast p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.toast.success {
+  border-left-color: #16a34a;
+}
+
+.toast.error {
+  border-left-color: #dc2626;
+}
+
+.toast.warning {
+  border-left-color: #f59e0b;
+}
+
+.toast.info {
+  border-left-color: #2563eb;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
