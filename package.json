@@ -1,0 +1,21 @@
+{
+  "name": "sistema-notificaciones",
+  "version": "1.0.0",
+  "description": "Sistema de notificaciones universitarias usando el patrón Publish/Subscribe con Node.js y WebSockets.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "publisher": "node src/publisher.js",
+    "subscriber": "node src/subscriber.js"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": "10.9.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
