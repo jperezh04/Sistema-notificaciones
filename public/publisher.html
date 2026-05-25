@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Publicador - Notificaciones Universitarias</title>
+  <title>Publicador — Notificaciones Universitarias</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+
   <header class="header publisher-header">
-    <div>
+    <div class="header-text">
       <h1>Panel del Publicador</h1>
-      <p>Publicación de eventos académicos mediante WebSockets</p>
+      <p>Publicacion de eventos academicos mediante WebSockets</p>
     </div>
     <span class="badge">Publisher</span>
   </header>
 
   <main class="single-container">
     <section class="card wide-card">
-      <h2>Publicar notificación</h2>
-      <p class="muted">
-        Primero selecciona el boletín o canal, luego elige el tipo de evento disponible para ese canal.
-      </p>
+
+      <div class="card-title">Conexion al servidor</div>
+      <div class="card-subtitle">Ingresa tu nombre y conecta antes de publicar eventos.</div>
 
       <div class="grid-two">
         <div>
           <label>Nombre del emisor</label>
-          <input id="publisherName" type="text" placeholder="Ejemplo: Docente" />
+          <input id="publisherName" type="text" placeholder="Ej: Docente / Coordinacion" />
         </div>
-
         <div>
-          <label>Estado de conexión</label>
+          <label>Estado de conexion</label>
           <div class="status-box">
+            <span class="status-dot" id="publisherDot"></span>
             <span id="publisherStatus">No conectado</span>
           </div>
         </div>
       </div>
 
-      <button id="connectPublisherBtn">Conectar publicador</button>
+      <div class="button-row">
+        <button class="connect-btn" id="connectPublisherBtn">Conectar publicador</button>
+      </div>
 
       <hr />
 
-      <label>Boletín / Canal</label>
-      <select id="channelSelect"></select>
+      <div class="card-title">Publicar notificacion</div>
+      <div class="card-subtitle">Selecciona el canal y el tipo de evento. Puedes editar el titulo y mensaje antes de
+        publicar.</div>
 
-      <label>Tipo de evento</label>
-      <select id="eventSelect"></select>
+      <div class="grid-two">
+        <div>
+          <label>Boletin / Canal</label>
+          <select id="channelSelect"></select>
+        </div>
+        <div>
+          <label>Tipo de evento</label>
+          <select id="eventSelect"></select>
+        </div>
+      </div>
 
-      <label>Título</label>
+      <label>Titulo</label>
       <input id="eventTitle" type="text" />
 
       <label>Mensaje</label>
-      <textarea id="eventMessage" rows="5"></textarea>
+      <textarea id="eventMessage" rows="4"></textarea>
 
       <button id="publishBtn" class="success full-button">Publicar evento</button>
 
@@ -58,10 +71,24 @@
   </main>
 
   <footer class="footer">
-    Vista exclusiva del publicador | Servidor esperado:
-    <strong>ws://localhost:8080</strong>
+    Vista del publicador &nbsp;&middot;&nbsp; Servidor: <strong>ws://localhost:8080</strong>
   </footer>
+
   <div id="toastContainer" class="toast-container"></div>
   <script src="publisher-ui.js"></script>
+  <script>
+    // Sync status dot with status text changes
+    const dot = document.getElementById('publisherDot');
+    const statusEl = document.getElementById('publisherStatus');
+    const observer = new MutationObserver(() => {
+      const t = statusEl.textContent.toLowerCase();
+      dot.className = 'status-dot';
+      if (t.includes('conectado')) dot.classList.add('connected');
+      else if (t.includes('error') || t.includes('cerrada')) dot.classList.add('error');
+      else if (t.includes('intentando')) dot.classList.add('connecting');
+    });
+    observer.observe(statusEl, { childList: true, characterData: true, subtree: true });
+  </script>
 </body>
+
 </html>

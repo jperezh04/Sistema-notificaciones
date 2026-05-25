@@ -1,68 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suscriptor - Notificaciones Universitarias</title>
+  <title>Suscriptores — Notificaciones Universitarias</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+
   <header class="header subscriber-header">
-    <div>
-      <h1>Panel del Suscriptor</h1>
-      <p>Recepción de notificaciones universitarias en tiempo real</p>
+    <div class="header-text">
+      <h1>Panel de Suscriptores</h1>
+      <p>Multiples sesiones de suscripcion en tiempo real</p>
     </div>
-    <span class="badge">Subscriber</span>
+    <span class="badge">Subscribers</span>
   </header>
 
   <main class="single-container">
     <section class="card wide-card">
-      <h2>Suscripción a boletines</h2>
-      <p class="muted">
-        El estudiante puede suscribirse o retirarse de distintos boletines.
-      </p>
 
-      <div class="grid-two">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px;">
         <div>
-          <label>Nombre del suscriptor</label>
-          <input id="subscriberName" type="text" placeholder="Ejemplo: Jeremy" />
+          <div class="card-title">Gestion de suscriptores</div>
+          <div class="card-subtitle">Agrega varios suscriptores, cada uno con su propia conexion WebSocket y boletines
+            independientes.</div>
         </div>
+        <button class="btn-sub" id="toggleFormBtn"
+          style="background:#1e6b50; color:#fff; border-color:#1e6b50; margin-top:4px;">+ Nuevo suscriptor</button>
+      </div>
 
-        <div>
-          <label>Estado de conexión</label>
-          <div class="status-box">
-            <span id="subscriberStatus">No conectado</span>
+      <!-- Formulario de nuevo suscriptor -->
+      <div class="add-subscriber-form hidden" id="addSubscriberForm">
+        <div class="card-title" style="margin-bottom:14px;">Registrar nuevo suscriptor</div>
+
+        <div class="form-row">
+          <div>
+            <label>Nombre del suscriptor</label>
+            <input id="newSubName" type="text" placeholder="Ej: Jeremy, Maria..." />
+          </div>
+          <div style="display:flex; align-items:flex-end;">
+            <button class="success" id="addSubscriberBtn" style="width:100%;">Agregar y conectar</button>
           </div>
         </div>
+
+        <label>Boletines iniciales</label>
+        <div class="checkbox-group" id="newSubChannels"></div>
       </div>
 
-      <label>Boletines disponibles</label>
-      <div class="checkbox-group" id="subscriberChannels"></div>
-
-      <div class="button-row">
-        <button id="connectSubscriberBtn">Conectar suscriptor</button>
-        <button id="addChannelsBtn" class="secondary">Agregar boletines</button>
-        <button id="removeChannelsBtn" class="danger">Eliminar boletines</button>
-        <button id="myChannelsBtn" class="outline">Ver mis boletines</button>
+      <!-- Suscriptores activos -->
+      <div class="section-heading" style="margin-top:24px;">
+        Suscriptores activos
+        <span id="subscriberCount"
+          style="background:var(--blue-bg); border:1px solid var(--pub-mid); color:var(--blue); padding:1px 10px; border-radius:999px; font-size:11px;">0</span>
       </div>
 
-      <h3>Notificaciones recibidas</h3>
-      <div id="notifications" class="notifications">
-        <p class="empty">Todavía no hay notificaciones recibidas.</p>
+      <div class="subscribers-grid" id="subscribersGrid">
+        <div id="emptyState"
+          style="grid-column:1/-1; text-align:center; padding:36px 0; color:var(--text-dim); font-size:13px; font-style:italic;">
+          No hay suscriptores todavia. Agrega uno con el boton de arriba.
+        </div>
       </div>
 
-      <h3>Historial reciente</h3>
-      <div id="history" class="history">
-        <p class="empty">Todavía no hay historial cargado.</p>
-      </div>
     </section>
   </main>
 
   <footer class="footer">
-    Vista exclusiva del suscriptor | Servidor esperado:
-    <strong>ws://localhost:8080</strong>
+    Panel multi-suscriptor &nbsp;&middot;&nbsp; Servidor: <strong>ws://localhost:8080</strong>
   </footer>
 
-  <script src="subscriber-ui.js"></script>
+  <div id="toastContainer" class="toast-container"></div>
+  <script src="subscriber-multi.js"></script>
 </body>
+
 </html>
